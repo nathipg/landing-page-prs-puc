@@ -4,18 +4,25 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 interface IconProps {
   icon: IconDefinition;
+  variant?: 'primary';
   children?: React.ReactNode;
 }
 
-const StyledIcon = styled.div`
-  display: flex;
+interface StyledIconProps {
+  variant?: 'primary';
+}
+
+const StyledIcon = styled.div<StyledIconProps>`
   align-items: center;
+  display: inline-flex;
   gap: 0.5rem;
+  color: ${({ variant, theme }) =>
+    variant && variant === 'primary' ? theme.color.primary : null};
 `;
 
-const Icon = ({ icon, children }: IconProps) => {
+const Icon = ({ icon, variant, children }: IconProps) => {
   return (
-    <StyledIcon>
+    <StyledIcon variant={variant}>
       <FontAwesomeIcon icon={icon} />
       {children}
     </StyledIcon>
