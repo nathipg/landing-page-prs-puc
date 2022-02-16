@@ -1,6 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+import { ThemeType } from './types/theme';
+
+interface GlobalStyleProps {
+  theme: ThemeType;
+}
+
+const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   * {
     margin: 0;
     padding: 0;
@@ -13,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: var(--dark-gray);
+    background-color: ${({ theme }) => theme.color.bgPrimary}
   }
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
