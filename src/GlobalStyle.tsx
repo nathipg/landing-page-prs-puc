@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { ThemeType } from './types/theme';
+import { Theme } from './types/theme';
 
 interface GlobalStyleProps {
-  theme: ThemeType;
+  theme: Theme;
 }
 
 const GlobalStyle = createGlobalStyle<GlobalStyleProps>`

@@ -1,4 +1,4 @@
-export interface ThemeType {
+export interface Theme {
   color: {
     primary: string;
     bgPrimary: string;
