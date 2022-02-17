@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import Overview from './Overview';
 import SignUpForm from './SignUpForm';
 import UsersReview from './UsersReview';
 
@@ -22,6 +23,7 @@ const Home = () => {
 
   return (
     <>
+      <Overview />
       <SignUpForm />
       {loading && <Loading />}
       {!loading && !error && <UsersReview reviews={reviews} />}

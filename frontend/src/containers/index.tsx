@@ -7,3 +7,10 @@ export const Container = styled.div`
 export const MainContentContainer = styled.div`
   padding: 1rem 0;
 `;
+
+export const SectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+`;
