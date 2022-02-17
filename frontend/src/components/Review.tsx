@@ -20,6 +20,7 @@ const StyledReview = styled.div`
   @media (min-width: ${({ theme }) => theme.breakPoint.lg}) {
     flex-direction: row;
     max-width: calc(50% - 1rem);
+    min-width: calc(50% - 1rem);
   }
 `;
 
