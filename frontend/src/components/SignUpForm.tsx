@@ -18,6 +18,7 @@ import {
   BLUR_INPUT_CLIENT,
   FOCUS_INPUT_CLIENT,
   VALIDATE_FORM_CLIENT,
+  CLEAN_UP_FORM_CLIENT,
 } from '../store/actions/client';
 
 interface SignUpFormProps {
@@ -149,6 +150,10 @@ const SignUpForm = ({ addClientHandler }: SignUpFormProps) => {
     };
 
     addClientHandler(client);
+
+    dispatch({
+      type: CLEAN_UP_FORM_CLIENT,
+    });
   };
 
   return (
