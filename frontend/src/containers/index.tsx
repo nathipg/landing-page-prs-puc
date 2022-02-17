@@ -22,6 +22,7 @@ export const SectionContainer = styled.div`
 export const SplitContainer = styled.div<SplitContainerProps>`
   @media (min-width: ${({ theme }) => theme.breakPoint.lg}) {
     display: flex;
+    gap: 2rem;
     flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 
     > * {
