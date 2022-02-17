@@ -26,7 +26,7 @@ interface SignUpFormProps {
 }
 
 const StyledSignUpForm = styled.form`
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 1rem;
   background-color: ${({ theme }) => theme.color.bgSecondary};
 `;
