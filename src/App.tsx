@@ -1,6 +1,6 @@
 import Home from './pages/Home';
 
-import { Container } from './containers';
+import { Container, MainContentContainer } from './containers';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -9,7 +9,9 @@ function App() {
   return (
     <Container>
       <Header />
-      <Home />
+      <MainContentContainer>
+        <Home />
+      </MainContentContainer>
       <Footer />
     </Container>
   );
