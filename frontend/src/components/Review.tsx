@@ -4,6 +4,7 @@ import UserIcon from './UserIcon';
 
 interface ReviewProps {
   name: string;
+  picture: string;
   text: string;
 }
 
@@ -39,10 +40,10 @@ const StyledReviewContent = styled.div`
   }
 `;
 
-const Review = ({ name, text }: ReviewProps) => {
+const Review = ({ name, picture, text }: ReviewProps) => {
   return (
     <StyledReview>
-      <UserIcon picture="https://github.com/nathipg.png" />
+      <UserIcon picture={picture} />
       <StyledReviewContent>
         <span>{name}</span>
         <p>{text}</p>
