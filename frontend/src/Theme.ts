@@ -3,6 +3,8 @@ export const theme = {
     primary: '#DC143C',
     bgPrimary: '#F8F8FF',
     bgSecondary: '#FFF',
+    error: '#DC143C',
+    ok: '#A0DC14',
   },
   breakPoint: {
     sm: '576px',

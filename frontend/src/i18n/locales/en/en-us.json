@@ -7,6 +7,14 @@
     "Somos a empresa número 1 em desenvolvimento de soluções. Aqui, nós prezamos pela satisfação do cliente, sua solução é garantida.": "We are the number 1 company in solution development. Here, we value customer satisfaction, your solution is guaranteed.",
     "Temos 24 anos de experiência em desenvolvimento de soluções, uma história próspera e cheia de clientes felizes.": "We have 24 years of experience in solution development, a thriving history and full of happy customers.",
     "Cada solução é feita sob medida para a necessidade do cliente, não existem duas soluções da Meteoro iguais.": "Each solution is tailored to the customer's needs, no two Meteoro solutions are the same.",
-    "Quer ser nosso cliente? Cadastre-se aqui!": "Want to be our customer? Sign up here!"
+    "Quer ser nosso cliente? Cadastre-se aqui!": "Want to be our customer? Sign up here!",
+    "nome": "name",
+    "Por favor, insira seu nome e sobrenome": "Please, type your fullname",
+    "email": "email",
+    "Por favor, insira seu email": "Please, type your email",
+    "Por favor, insira um email válido": "Please, type a valid email",
+    "senha": "password",
+    "Por favor, insira uma senha com pelo menos 5 caracteres": "Please, type a password at least 5 characters long",
+    "Cadastrar": "Sign Up"
   }
 }

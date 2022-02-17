@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface SplitContainerProps {
+  reverse?: boolean;
+}
+
 export const Container = styled.div`
   margin: 0.75rem;
 `;
@@ -15,10 +19,10 @@ export const SectionContainer = styled.div`
   margin: 1rem 0;
 `;
 
-export const SplitContainer = styled.div`
+export const SplitContainer = styled.div<SplitContainerProps>`
   @media (min-width: ${({ theme }) => theme.breakPoint.lg}) {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 
     > * {
       flex-basis: 50%;

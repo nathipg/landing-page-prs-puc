@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: ${({ theme }) => theme.color.bgPrimary}
+    background-color: ${({ theme }) => theme.color.bgPrimary};
   }
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
