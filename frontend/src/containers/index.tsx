@@ -14,3 +14,14 @@ export const SectionContainer = styled.div`
   gap: 1rem;
   margin: 1rem 0;
 `;
+
+export const SplitContainer = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakPoint.lg}) {
+    display: flex;
+    flex-direction: row-reverse;
+
+    > * {
+      flex-basis: 50%;
+    }
+  }
+`;

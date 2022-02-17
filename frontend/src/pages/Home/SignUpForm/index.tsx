@@ -1,12 +1,16 @@
-import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
-const StyledSignUpForm = styled.div``;
+import Title from '../../../components/Title';
+
+import { SectionContainer } from '../../../containers';
 
 const SignUpForm = () => {
+  const { t } = useTranslation();
+
   return (
-    <StyledSignUpForm>
-      
-    </StyledSignUpForm>
+    <SectionContainer>
+      <Title as="h2">{t('Quer ser nosso cliente? Cadastre-se aqui!')}</Title>
+    </SectionContainer>
   );
 };
 

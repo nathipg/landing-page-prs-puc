@@ -6,6 +6,8 @@ import UsersReview from './UsersReview';
 
 import Loading from '../../components/Loading';
 
+import { SplitContainer } from '../../containers';
+
 import { useGet } from '../../hooks/customHooks';
 
 import { Review } from '../../types/review';
@@ -23,8 +25,10 @@ const Home = () => {
 
   return (
     <>
-      <Overview />
-      <SignUpForm />
+      <SplitContainer>
+        <SignUpForm />
+        <Overview />
+      </SplitContainer>
       {loading && <Loading />}
       {!loading && !error && <UsersReview reviews={reviews} />}
     </>
