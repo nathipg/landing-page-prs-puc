@@ -28,6 +28,9 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   #root {
     min-width: 350px;
   }
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyle;

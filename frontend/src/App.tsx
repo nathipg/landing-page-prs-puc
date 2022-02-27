@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,6 +9,7 @@ import {
 } from '@apollo/client';
 
 import Home from './pages/Home';
+import Clients from './pages/Clients';
 
 import { Container, MainContentContainer } from './containers';
 
@@ -37,7 +39,11 @@ function App() {
         {toast.isVisible && <Toast />}
 
         <MainContentContainer>
-          <Home />
+          <Routes>
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Navigate replace to="/" />} />
+          </Routes>
         </MainContentContainer>
         <Footer />
       </Container>
