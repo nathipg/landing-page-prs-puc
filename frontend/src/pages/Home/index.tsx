@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import Overview from './Overview';
 import SignUp from './SignUp';
@@ -9,24 +9,42 @@ import Loading from '../../components/Loading';
 
 import { SplitContainer } from '../../containers';
 
-import { usePost } from '../../hooks/api';
-
 import { Client } from '../../types/client';
 import { Review } from '../../types/review';
 
 import { LOAD_REVIEWS } from '../../graphql/Queries';
+import { CREATE_CLIENT_MUTATION } from '../../graphql/Mutations';
 
 const Home = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [clients, setClients] = useState<Client[]>([]);
 
-  const { apiPost } = usePost('/client');
-
   const { data, loading, error } = useQuery(LOAD_REVIEWS);
+  const [createClient, { error: errorMutation }] = useMutation(
+    CREATE_CLIENT_MUTATION
+  );
 
   const addClientHandler = async (client: Client) => {
-    await apiPost(client);
-    setClients(prevState => [...prevState, client]);
+    const response = await createClient({
+      variables: {
+        name: client.name,
+        email: client.email,
+        password: client.password,
+      },
+    });
+
+    if (errorMutation) {
+      console.error(errorMutation);
+      return;
+    }
+
+    setClients(prevState => [
+      ...prevState,
+      {
+        id: response.data.createClient.id,
+        ...client,
+      },
+    ]);
   };
 
   useEffect(() => {
@@ -34,6 +52,8 @@ const Home = () => {
       setReviews(data.getAllReviews);
     }
   }, [data]);
+
+  console.log({ clients });
 
   return (
     <>

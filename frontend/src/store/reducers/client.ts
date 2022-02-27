@@ -11,12 +11,23 @@ import { validate } from '../../utils/validation';
 import { FormReducer } from '../../types/form';
 
 const changeInputHandler: FormReducer = (prevState, action) => {
-  const updatedFields = prevState.fields.map((field) => {
+  const updatedFields = prevState.fields.map(field => {
     if (field.name === action.field) {
-      return {
-        ...field,
-        value: action.value ? action.value : '',
-      };
+      const stateField = prevState.fields.find(
+        field => field.name === action.field
+      );
+
+      if (stateField) {
+        const value = action.value ? action.value : '';
+        const result = validate(stateField.validations, value);
+
+        return {
+          ...field,
+          value,
+          valid: result.isValid,
+          errorMsg: result.message ? result.message : '',
+        };
+      }
     }
 
     return field;
@@ -29,7 +40,7 @@ const changeInputHandler: FormReducer = (prevState, action) => {
 };
 
 const blurInputHandler: FormReducer = (prevState, action) => {
-  const field = prevState.fields.find((field) => field.name === action.field);
+  const field = prevState.fields.find(field => field.name === action.field);
 
   if (!field) {
     return prevState;
@@ -37,7 +48,7 @@ const blurInputHandler: FormReducer = (prevState, action) => {
 
   const result = validate(field.validations, field.value);
 
-  const updatedFields = prevState.fields.map((field) => {
+  const updatedFields = prevState.fields.map(field => {
     if (field.name === action.field) {
       return {
         ...field,
@@ -56,7 +67,7 @@ const blurInputHandler: FormReducer = (prevState, action) => {
 };
 
 const focusInputHandler: FormReducer = (prevState, action) => {
-  const updatedFields = prevState.fields.map((field) => {
+  const updatedFields = prevState.fields.map(field => {
     if (field.name === action.field) {
       return {
         ...field,
@@ -74,7 +85,7 @@ const focusInputHandler: FormReducer = (prevState, action) => {
 };
 
 const validateFormHandler: FormReducer = (prevState, action) => {
-  const updatedFields = prevState.fields.map((field) => {
+  const updatedFields = prevState.fields.map(field => {
     const result = validate(field.validations, field.value);
     return {
       ...field,
@@ -91,7 +102,7 @@ const validateFormHandler: FormReducer = (prevState, action) => {
 };
 
 const cleanUpFormHandler: FormReducer = (prevState, action) => {
-  const updatedFields = prevState.fields.map((field) => {
+  const updatedFields = prevState.fields.map(field => {
     return {
       ...field,
       touched: false,
