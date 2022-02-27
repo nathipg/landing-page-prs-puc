@@ -11,7 +11,7 @@ import { validate } from '../utils/validation';
 import { Form } from '../types/form';
 import { Client } from '../types/client';
 
-import { clientFormReducer } from '../store/reducers/client';
+import { clientFormReducer } from '../store/reducers/clientForm';
 
 import {
   USER_INPUT_CLIENT,
@@ -19,7 +19,7 @@ import {
   FOCUS_INPUT_CLIENT,
   VALIDATE_FORM_CLIENT,
   CLEAN_UP_FORM_CLIENT,
-} from '../store/actions/client';
+} from '../store/actions/clientForm';
 
 import ToastContext from '../store/contexts/toast';
 

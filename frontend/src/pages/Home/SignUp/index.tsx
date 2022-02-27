@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import SignUpForm from '../../../components/SignUpForm';
@@ -5,14 +6,12 @@ import Title from '../../../components/Title';
 
 import { SectionContainer } from '../../../containers';
 
-import { Client } from '../../../types/client';
+import ClientContext from '../../../store/contexts/clients';
 
-interface SignUpProps {
-  addClientHandler: (client: Client) => Promise<boolean>;
-}
-
-const SignUp = ({ addClientHandler }: SignUpProps) => {
+const SignUp = () => {
   const { t } = useTranslation();
+
+  const { addClientHandler } = useContext(ClientContext);
 
   return (
     <SectionContainer>
