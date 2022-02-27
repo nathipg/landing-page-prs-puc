@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import {
   ApolloClient,
@@ -8,16 +8,17 @@ import {
   from,
 } from '@apollo/client';
 
-import Home from './pages/Home';
-import Clients from './pages/Clients';
-
 import { Container, MainContentContainer } from './containers';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Loading from './components/Loading';
 import Toast from './components/Toast';
 
 import ToastContext from './store/contexts/toast';
+
+const LazyHome = React.lazy(() => import('./pages/Home'));
+const LazyClients = React.lazy(() => import('./pages/Clients'));
 
 const link = from([
   new HttpLink({ uri: `${process.env.REACT_APP_BACKEND_URL}/graphql` }),
@@ -39,11 +40,13 @@ function App() {
         {toast.isVisible && <Toast />}
 
         <MainContentContainer>
-          <Routes>
-            <Route path="/clients" element={<Clients />} />
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<Navigate replace to="/" />} />
-          </Routes>
+          <React.Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/clients" element={<LazyClients />} />
+              <Route path="/" element={<LazyHome />} />
+              <Route path="*" element={<Navigate replace to="/" />} />
+            </Routes>
+          </React.Suspense>
         </MainContentContainer>
         <Footer />
       </Container>
