@@ -20,6 +20,7 @@ const Header = () => {
         <Brand />
       </Link>
       <Menu>
+        <MenuOption to="/">Home</MenuOption>
         <MenuOption to="/clients">Clients</MenuOption>
       </Menu>
     </StyledHeader>
