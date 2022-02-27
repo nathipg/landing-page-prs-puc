@@ -14,12 +14,12 @@ export const useGet = <T extends {}>(url: string) => {
     try {
       const response = await api.get<T, AxiosResponse<{ payload: T }>>(url);
       setResponse(response);
+      setLoading(false);
     } catch (e) {
-      setResponse(undefined);
+      setLoading(false);
       setError(errorHandler(e));
-      // setError(e);
+      setResponse(undefined);
     }
-    setLoading(false);
   };
 
   useEffect(() => {

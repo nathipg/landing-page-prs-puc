@@ -15,19 +15,27 @@ interface UsersReviewProps {
 const UsersReview = ({ reviews }: UsersReviewProps) => {
   const { t } = useTranslation();
 
+  const listReviews = () => {
+    if (reviews.length === 0) {
+      return (
+        <p>{t('Se torne nosso cliente e seja o primeiro a nos avaliar!')}</p>
+      );
+    }
+
+    return reviews.map((review, key) => (
+      <Review
+        key={key}
+        name={review.user.name}
+        picture={review.user.picture}
+        text={review.text}
+      />
+    ));
+  };
+
   return (
     <SectionContainer>
       <Title as="h2">{t('Avaliação dos Usuários')}</Title>
-      <List>
-        {reviews.map((review, key) => (
-          <Review
-            key={key}
-            name={review.user.name}
-            picture={review.user.picture}
-            text={review.text}
-          />
-        ))}
-      </List>
+      <List>{listReviews()}</List>
     </SectionContainer>
   );
 };
