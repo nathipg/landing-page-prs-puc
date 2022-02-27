@@ -21,6 +21,8 @@
     "Cadastro falhou": "Sign up failed",
     "success": "success",
     "error": "error",
-    "fechar": "close"
+    "fechar": "close",
+    "Nossos Clientes": "Our Clients",
+    "Nenhum cliente encontrado": "No clients found"
   }
 }

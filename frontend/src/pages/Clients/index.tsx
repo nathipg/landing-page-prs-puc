@@ -1,5 +1,7 @@
+import OurClients from './OurClients';
+
 const Clients = () => {
-  return <h1>Clients</h1>;
+  return <OurClients />;
 };
 
 export default Clients;
