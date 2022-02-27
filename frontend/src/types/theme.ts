@@ -3,6 +3,10 @@ export interface Theme {
     primary: string;
     bgPrimary: string;
     bgSecondary: string;
+    error: string;
+    ok: string;
+    lightGray: string;
+    gray: string;
   };
   breakPoint: {
     sm: string;

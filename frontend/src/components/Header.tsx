@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Brand from './Brand';
-import Menu from './Menu';
-import MenuOption from './MenuOption';
+import { Menu, MenuOption } from './Menu';
 
 const StyledHeader = styled.div`
   display: flex;
@@ -13,6 +12,7 @@ const StyledHeader = styled.div`
   border-bottom: 2px solid ${({ theme }) => theme.color.primary};
 `;
 
+/** App Header with Menu */
 const Header = () => {
   return (
     <StyledHeader>

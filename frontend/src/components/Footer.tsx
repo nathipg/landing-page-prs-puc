@@ -12,6 +12,7 @@ const StyledFooter = styled.div`
   border-top: 2px solid ${({ theme }) => theme.color.primary};
 `;
 
+/** App Footer */
 const Footer = () => {
   const { t } = useTranslation();
 

@@ -23,7 +23,8 @@ import {
 
 import ToastContext from '../store/contexts/toast';
 
-interface SignUpFormProps {
+export interface SignUpFormProps {
+  /** Function responsible for handle the add user action */
   addClientHandler: (client: Client) => Promise<boolean>;
 }
 
@@ -33,6 +34,7 @@ const StyledSignUpForm = styled.form`
   background-color: ${({ theme }) => theme.color.bgSecondary};
 `;
 
+/** Sign up user form */
 const SignUpForm = ({ addClientHandler }: SignUpFormProps) => {
   const { t } = useTranslation();
   const toastCtx = useContext(ToastContext);

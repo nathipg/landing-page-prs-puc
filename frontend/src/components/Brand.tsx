@@ -4,6 +4,7 @@ import { faMeteor } from '@fortawesome/free-solid-svg-icons';
 import Icon from '../components/Icon';
 import Title from '../components/Title';
 
+/** Meteor Brand */
 const Brand = () => {
   const { t } = useTranslation();
 

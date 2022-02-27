@@ -2,14 +2,17 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-interface IconProps {
+export interface IconProps {
+  /** FontAwesome icon */
   icon: IconDefinition;
-  variant?: 'primary';
+  /** Icon variation */
+  variant: 'default' | 'primary';
+  /** Content next to the icon */
   children?: React.ReactNode;
 }
 
 interface StyledIconProps {
-  variant?: 'primary';
+  variant: 'default' | 'primary';
 }
 
 const StyledIcon = styled.div<StyledIconProps>`
@@ -20,7 +23,8 @@ const StyledIcon = styled.div<StyledIconProps>`
     variant && variant === 'primary' ? theme.color.primary : null};
 `;
 
-const Icon = ({ icon, variant, children }: IconProps) => {
+/** Component to use FontAwesome icons */
+const Icon = ({ icon, variant = 'default', children }: IconProps) => {
   return (
     <StyledIcon variant={variant}>
       <FontAwesomeIcon icon={icon} />

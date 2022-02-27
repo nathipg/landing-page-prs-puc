@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-interface UserIconProps {
+export interface UserIconProps {
+  /** A picture URL */
   picture: string;
 }
 
@@ -21,6 +22,7 @@ const StyledIcon = styled.div<StyledIconProps>`
   height: 5rem;
 `;
 
+/** Round user icon */
 const UserIcon = ({ picture }: UserIconProps) => {
   return (
     <StyledContainer>

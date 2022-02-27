@@ -1,10 +1,15 @@
-import { t } from 'i18next';
-import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-import ToastContext from '../store/contexts/toast';
-
 import { StatusType } from '../types/toast';
+
+export interface ToastProps {
+  /** Toast status */
+  status: StatusType;
+  /** Toast message */
+  message: string;
+  hideHandler: () => void;
+}
 
 interface WrapperProps {
   status: StatusType;
@@ -58,17 +63,18 @@ const Button = styled.button`
   color: ${({ theme }) => theme.color.gray};
 `;
 
-const Toast = () => {
-  const toastCtx = useContext(ToastContext);
+/** Toast message */
+const Toast = ({ status, message, hideHandler }: ToastProps) => {
+  const { t } = useTranslation();
 
   return (
-    <Wrapper status={toastCtx.toast.status}>
+    <Wrapper status={status}>
       <MsgWrapper>
-        <h2>{t(toastCtx.toast.status)}</h2>
-        <span>{toastCtx.toast.msg}</span>
+        <h2>{t(status)}</h2>
+        <span>{message}</span>
       </MsgWrapper>
       <Options>
-        <Button onClick={toastCtx.hideHandler}>{t('fechar')}</Button>
+        <Button onClick={hideHandler}>{t('fechar')}</Button>
       </Options>
     </Wrapper>
   );

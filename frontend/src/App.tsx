@@ -14,13 +14,19 @@ const LazyHome = React.lazy(() => import('./pages/Home'));
 const LazyClients = React.lazy(() => import('./pages/Clients'));
 
 function App() {
-  const { toast } = useContext(ToastContext);
+  const toastCtx = useContext(ToastContext);
 
   return (
     <Container>
       <Header />
 
-      {toast.isVisible && <Toast />}
+      {toastCtx.toast.isVisible && (
+        <Toast
+          status={toastCtx.toast.status}
+          message={toastCtx.toast.msg}
+          hideHandler={toastCtx.hideHandler}
+        />
+      )}
 
       <MainContentContainer>
         <React.Suspense fallback={<Loading />}>

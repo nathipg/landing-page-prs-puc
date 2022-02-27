@@ -2,9 +2,12 @@ import styled from 'styled-components';
 
 import UserIcon from './UserIcon';
 
-interface ReviewProps {
+export interface ReviewProps {
+  /** User name */
   name: string;
+  /** User picture */
   picture: string;
+  /** Review text */
   text: string;
 }
 
@@ -32,6 +35,11 @@ const StyledReviewContent = styled.div`
   span {
     align-self: center;
     font-weight: bold;
+    word-break: break-all;
+  }
+  
+  p {
+    word-break: break-all;
   }
 
   @media (min-width: ${({ theme }) => theme.breakPoint.lg}) {
@@ -41,6 +49,7 @@ const StyledReviewContent = styled.div`
   }
 `;
 
+/** Users' review component */
 const Review = ({ name, picture, text }: ReviewProps) => {
   return (
     <StyledReview>

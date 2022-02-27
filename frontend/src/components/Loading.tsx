@@ -33,6 +33,7 @@ const DualRing = styled.div`
   }
 `;
 
+/** Load spinner */
 const Loading = () => {
   return (
     <Wrapper>

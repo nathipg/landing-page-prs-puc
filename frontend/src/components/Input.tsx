@@ -1,16 +1,26 @@
 import { ChangeEvent } from 'react';
 import styled, { css } from 'styled-components';
 
-interface InputProps {
+export interface InputProps {
+  /** Input label */
   label: string;
+  /** Input type */
   type: string;
+  /** Input name */
   name: string;
+  /** Input value */
   value: string;
+  /** Indicate if the input is valid or not */
   valid: boolean;
+  /** Message shown if the input is invalid */
   invalidMessage: string;
+  /** Indicate if the input was changed by the user (Focus or typed) */
   touched: boolean;
+  /** Function to deal with input change */
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  /** Function to deal with input blur */
   onBlur: (event: ChangeEvent<HTMLInputElement>) => void;
+  /** Function to deal with input focus */
   onFocus: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -93,6 +103,7 @@ const InvalidMessage = styled.span`
   font-size: 0.8rem;
 `;
 
+/** Input component for forms */
 const Input = ({
   label,
   type,

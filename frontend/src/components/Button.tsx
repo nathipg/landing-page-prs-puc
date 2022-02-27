@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+/** Default Button */
 const Button = styled.button`
   border-radius: 0.5rem;
   cursor: pointer;

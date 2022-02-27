@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+/** List of components of any type, flex-direction is column */
 const List = styled.div`
   display: flex;
   flex-direction: column;

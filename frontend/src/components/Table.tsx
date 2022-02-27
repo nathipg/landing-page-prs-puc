@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+/** Wrap the table, prevents overflow */
 export const TableWrapper = styled.div`
   overflow-x: auto;
   width: stretch;
@@ -9,17 +10,21 @@ export const TableWrapper = styled.div`
   padding: 1rem;
 `;
 
+/** Default Table */
 export const Table = styled.table`
   border-collapse: collapse;
   width: stretch;
 `;
 
+/** Default thead */
 export const THead = styled.thead``;
 
+/** Default thead tr */
 export const THRow = styled.tr`
   border-bottom: 1px solid ${({ theme }) => theme.color.primary};
 `;
 
+/** Default th */
 export const THCol = styled.th`
   font-size: 0.9rem;
   font-weight: 600;
@@ -28,8 +33,10 @@ export const THCol = styled.th`
   padding: 0.5rem;
 `;
 
+/** Default tbody */
 export const TBody = styled.tbody``;
 
+/** Default tr */
 export const TRow = styled.tr`
   border-bottom: 1px solid ${({ theme }) => theme.color.gray};
   background-color: ${({ theme }) => theme.color.bgSecondary};
@@ -43,6 +50,8 @@ export const TRow = styled.tr`
   }
 `;
 
+/** Default td */
 export const TCol = styled.td`
   padding: 0.5rem;
+  white-space: nowrap;
 `;
