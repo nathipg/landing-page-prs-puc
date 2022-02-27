@@ -18,9 +18,16 @@ const RootQuery = new GraphQLObjectType({
   fields: {
     getAllReviews: {
       type: new GraphQLList(ReviewType),
-      args: { id: { type: GraphQLInt } },
+      args: {},
       resolve(parent, args) {
         return reviewData;
+      },
+    },
+    getAllClients: {
+      type: new GraphQLList(ClientType),
+      args: {},
+      resolve(parent, args) {
+        return clientData;
       },
     },
   },

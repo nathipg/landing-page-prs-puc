@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const LOAD_REVIEWS = gql`
+export const LOAD_REVIEWS_QUERY = gql`
   query {
     getAllReviews {
       id
@@ -10,6 +10,16 @@ export const LOAD_REVIEWS = gql`
         picture
       }
       text
+    }
+  }
+`;
+
+export const LOAD_CLIENTS_QUERY = gql`
+  query {
+    getAllClients {
+      id
+      name
+      email
     }
   }
 `;

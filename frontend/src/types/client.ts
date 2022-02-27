@@ -12,4 +12,5 @@ export interface ClientReducer {
 export interface ClientAction {
   type: string;
   client?: Client;
+  clients?: Client[];
 }

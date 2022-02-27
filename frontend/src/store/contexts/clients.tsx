@@ -1,18 +1,23 @@
-import { createContext, ReactNode, useCallback, useReducer } from 'react';
-import { useMutation } from '@apollo/client';
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useReducer,
+} from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 
 import { clientReducer } from '../reducers/client';
 
 import { Client } from '../../types/client';
 
+import { LOAD_CLIENTS_QUERY } from '../../graphql/Queries';
 import { CREATE_CLIENT_MUTATION } from '../../graphql/Mutations';
 
-import { ADD_CLIENT } from '../actions/client';
+import { ADD_CLIENT, LOAD_CLIENTS } from '../actions/client';
 
 interface createContextProps {
   clients: Client[];
   addClientHandler: (client: Client) => Promise<boolean>;
-  loadClients: () => Promise<Client[]>;
 }
 
 interface ClientContextProviderProps {
@@ -22,9 +27,6 @@ interface ClientContextProviderProps {
 const ClientContext = createContext<createContextProps>({
   clients: [],
   addClientHandler: async client => true,
-  loadClients: async () => {
-    return [];
-  },
 });
 
 export const ClientContextProvider = ({
@@ -34,6 +36,7 @@ export const ClientContextProvider = ({
   const [createClient, { error: errorMutation }] = useMutation(
     CREATE_CLIENT_MUTATION
   );
+  const { data, loading, error } = useQuery(LOAD_CLIENTS_QUERY);
 
   const addClientHandler = async (client: Client) => {
     let result = true;
@@ -67,12 +70,17 @@ export const ClientContextProvider = ({
     return result;
   };
 
-  const loadClients = useCallback(async () => {
-    return [];
-  }, []);
+  useEffect(() => {
+    if (data) {
+      dispatchClients({
+        type: LOAD_CLIENTS,
+        clients: data.getAllClients,
+      });
+    }
+  }, [data]);
 
   return (
-    <ClientContext.Provider value={{ clients, addClientHandler, loadClients }}>
+    <ClientContext.Provider value={{ clients, addClientHandler }}>
       {children}
     </ClientContext.Provider>
   );

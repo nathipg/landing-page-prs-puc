@@ -3,6 +3,10 @@ import { ADD_CLIENT, LOAD_CLIENTS } from '../actions/client';
 import { ClientReducer } from '../../types/client';
 
 const loadHandler: ClientReducer = (prevState, action) => {
+  if (action.clients) {
+    return [...action.clients];
+  }
+
   return prevState;
 };
 

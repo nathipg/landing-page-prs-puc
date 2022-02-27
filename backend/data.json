@@ -37,5 +37,30 @@
       "text": "A solução chegou no prazo, ainda não testei, mas parece que vai funcionar."
     }
   ],
-  "clients": []
+  "clients": [
+    {
+      "id": 1,
+      "name": "Nathália Pissuti",
+      "email": "nathaliapissuti@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": 2,
+      "name": "Cauê S.J.",
+      "email": "csj@email.com",
+      "password": "12345"
+    },
+    {
+      "id": 3,
+      "name": "Laionel L.",
+      "email": "ll@email.com",
+      "password": "12345"
+    },
+    {
+      "id": 4,
+      "name": "Matheus M.",
+      "email": "mm@email.com",
+      "password": "12345"
+    }
+  ]
 }

@@ -11,12 +11,12 @@ import { SplitContainer } from '../../containers';
 
 import { Review } from '../../types/review';
 
-import { LOAD_REVIEWS } from '../../graphql/Queries';
+import { LOAD_REVIEWS_QUERY } from '../../graphql/Queries';
 
 const Home = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
 
-  const { data, loading, error } = useQuery(LOAD_REVIEWS);
+  const { data, loading, error } = useQuery(LOAD_REVIEWS_QUERY);
 
   useEffect(() => {
     if (data) {

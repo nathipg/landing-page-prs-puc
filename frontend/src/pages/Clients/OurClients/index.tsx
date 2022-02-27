@@ -31,7 +31,7 @@ const OurClients = () => {
       );
     }
     return clients.map(client => (
-      <TRow>
+      <TRow key={client.id}>
         <TCol>{client.name}</TCol>
         <TCol>{client.email}</TCol>
       </TRow>
