@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useReducer } from 'react';
+import { ChangeEvent, FormEvent, useContext, useReducer } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
@@ -21,8 +21,10 @@ import {
   CLEAN_UP_FORM_CLIENT,
 } from '../store/actions/client';
 
+import ToastContext from '../store/contexts/toast';
+
 interface SignUpFormProps {
-  addClientHandler: (client: Client) => void;
+  addClientHandler: (client: Client) => Promise<boolean>;
 }
 
 const StyledSignUpForm = styled.form`
@@ -33,6 +35,7 @@ const StyledSignUpForm = styled.form`
 
 const SignUpForm = ({ addClientHandler }: SignUpFormProps) => {
   const { t } = useTranslation();
+  const toastCtx = useContext(ToastContext);
 
   const formInitialState: Form = {
     isValid: false,
@@ -124,12 +127,12 @@ const SignUpForm = ({ addClientHandler }: SignUpFormProps) => {
     });
   };
 
-  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const isFormValid =
       formState.fields
-        .map((field) => {
+        .map(field => {
           const result = validate(field.validations, field.value);
           return result.isValid;
         })
@@ -145,22 +148,28 @@ const SignUpForm = ({ addClientHandler }: SignUpFormProps) => {
     const fields = formState.fields;
 
     const client: Client = {
-      name: fields.find((field) => field.name === 'name')!.value,
-      email: fields.find((field) => field.name === 'email')!.value,
-      password: fields.find((field) => field.name === 'password')!.value,
+      name: fields.find(field => field.name === 'name')!.value,
+      email: fields.find(field => field.name === 'email')!.value,
+      password: fields.find(field => field.name === 'password')!.value,
     };
 
-    addClientHandler(client);
+    const result = await addClientHandler(client);
 
-    dispatch({
-      type: CLEAN_UP_FORM_CLIENT,
-    });
+    if (result) {
+      toastCtx.showHandler(t('Cadastro bem sucedido'), 'success');
+
+      dispatch({
+        type: CLEAN_UP_FORM_CLIENT,
+      });
+    } else {
+      toastCtx.showHandler(t('Cadastro falhou'), 'error');
+    }
   };
 
   return (
     <StyledSignUpForm onSubmit={submitHandler}>
       <InputsWrapper>
-        {formState.fields.map((field) => (
+        {formState.fields.map(field => (
           <Input
             key={field.name}
             label={field.label}

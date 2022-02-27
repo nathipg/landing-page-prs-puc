@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   ApolloClient,
   InMemoryCache,
@@ -12,6 +13,9 @@ import { Container, MainContentContainer } from './containers';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Toast from './components/Toast';
+
+import ToastContext from './store/contexts/toast';
 
 const link = from([
   new HttpLink({ uri: `${process.env.REACT_APP_BACKEND_URL}/graphql` }),
@@ -23,10 +27,15 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const { toast } = useContext(ToastContext);
+
   return (
     <ApolloProvider client={client}>
       <Container>
         <Header />
+
+        {toast.isVisible && <Toast />}
+
         <MainContentContainer>
           <Home />
         </MainContentContainer>

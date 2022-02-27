@@ -16,6 +16,11 @@
     "senha": "password",
     "Por favor, insira uma senha com pelo menos 5 caracteres": "Please, type a password at least 5 characters long",
     "Cadastrar": "Sign Up",
-    "Se torne nosso cliente e seja o primeiro a nos avaliar!": "Become our customer and be the first to rate us!"
+    "Se torne nosso cliente e seja o primeiro a nos avaliar!": "Become our customer and be the first to rate us!",
+    "Cadastro bem sucedido": "Sign up successful",
+    "Cadastro falhou": "Sign up failed",
+    "success": "success",
+    "error": "error",
+    "fechar": "close"
   }
 }

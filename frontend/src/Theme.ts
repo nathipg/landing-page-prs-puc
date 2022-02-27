@@ -5,6 +5,7 @@ export const theme = {
     bgSecondary: '#FFF',
     error: '#DC143C',
     ok: '#A0DC14',
+    gray: '#B7B6B6',
   },
   breakPoint: {
     sm: '576px',

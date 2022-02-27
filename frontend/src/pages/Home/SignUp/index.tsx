@@ -8,7 +8,7 @@ import { SectionContainer } from '../../../containers';
 import { Client } from '../../../types/client';
 
 interface SignUpProps {
-  addClientHandler: (client: Client) => void;
+  addClientHandler: (client: Client) => Promise<boolean>;
 }
 
 const SignUp = ({ addClientHandler }: SignUpProps) => {

@@ -25,26 +25,35 @@ const Home = () => {
   );
 
   const addClientHandler = async (client: Client) => {
-    const response = await createClient({
-      variables: {
-        name: client.name,
-        email: client.email,
-        password: client.password,
-      },
-    });
+    let result = true;
 
-    if (errorMutation) {
-      console.error(errorMutation);
-      return;
+    try {
+      const response = await createClient({
+        variables: {
+          name: client.name,
+          email: client.email,
+          password: client.password,
+        },
+      });
+
+      if (errorMutation) {
+        console.error(errorMutation);
+        result = false;
+      }
+
+      setClients(prevState => [
+        ...prevState,
+        {
+          id: response.data.createClient.id,
+          ...client,
+        },
+      ]);
+    } catch (e) {
+      console.error(e);
+      result = false;
     }
 
-    setClients(prevState => [
-      ...prevState,
-      {
-        id: response.data.createClient.id,
-        ...client,
-      },
-    ]);
+    return result;
   };
 
   useEffect(() => {
@@ -52,8 +61,6 @@ const Home = () => {
       setReviews(data.getAllReviews);
     }
   }, [data]);
-
-  console.log({ clients });
 
   return (
     <>

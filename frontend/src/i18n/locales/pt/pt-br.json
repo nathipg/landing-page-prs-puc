@@ -16,6 +16,11 @@
     "senha": "senha",
     "Por favor, insira uma senha com pelo menos 5 caracteres": "Por favor, insira uma senha com pelo menos 5 caracteres",
     "Cadastrar": "Cadastrar",
-    "Se torne nosso cliente e seja o primeiro a nos avaliar!": "Se torne nosso cliente e seja o primeiro a nos avaliar!"
+    "Se torne nosso cliente e seja o primeiro a nos avaliar!": "Se torne nosso cliente e seja o primeiro a nos avaliar!",
+    "Cadastro bem sucedido": "Cadastro bem sucedido",
+    "Cadastro falhou": "Cadastro falhou",
+    "success": "sucesso",
+    "error": "erro",
+    "fechar": "fechar"
   }
 }
